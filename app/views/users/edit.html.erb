@@ -1,0 +1,46 @@
+<div class="body">
+  <div class="container">
+    <% if flash[:alert] %>
+      <div class="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <h2>User info</h2>
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :Name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :Image %><br />
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label :Introduction %><br />
+        <%= f.text_area :introduction %>
+      </div>
+      <%= f.submit 'Update User' %>
+    <% end %>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-5">
+        <p>CopyRight Inratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer>
